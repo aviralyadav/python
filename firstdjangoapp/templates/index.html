@@ -1,8 +1,43 @@
 <html>
   <head>
-    <title>Home Page</title>
+    <title>{{title}}</title>
+    <style>
+      .main {
+        width: auto;
+        background-color: red;
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+      }
+      th, td {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 40px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to home</h1>
+    <div class="main">
+      {{message}}
+    </div>
+    <br>
+    {% for item in clist %}
+    <div>{{forloop.counter}} {{item}}</div>
+    {% endfor %}
+<br>
+    <table border="2" cell-padding="5" >
+      <tr>
+        <td>Name</td>
+        <td>Mobile</td>
+      </tr>
+      
+      {% for user in userDetail %}
+      <tr>
+      <td>{{user.name}}</td>
+      <td>{{user.mobile}}</td>
+    </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>

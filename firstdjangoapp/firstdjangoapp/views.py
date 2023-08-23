@@ -3,7 +3,16 @@ from django.shortcuts import render
 from django.template import loader
 
 def homePage(request):
-    return render(request, "index.html")
+    data = {
+        'title': 'Home Page',
+        'message': 'Welcome to Django',
+        'clist': ['Php', 'JavaScript', 'Python'],
+        'userDetail': [
+            {'name': 'Aviral', 'mobile': '8496079312'},
+            {'name': 'Abhishek', 'mobile': '8496072123'}
+        ]
+    }
+    return render(request, "index.html", data)
 
 def aboutUs(request):
     return HttpResponse('About US')
