@@ -7,6 +7,7 @@ def homePage(request):
         'title': 'Home Page',
         'message': 'Welcome to Django',
         'clist': ['Php', 'JavaScript', 'Python'],
+        'numbers': [],
         'userDetail': [
             {'name': 'Aviral', 'mobile': '8496079312'},
             {'name': 'Abhishek', 'mobile': '8496072123'}
