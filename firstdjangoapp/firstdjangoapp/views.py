@@ -16,10 +16,16 @@ def homePage(request):
     return render(request, "index.html", data)
 
 def aboutUs(request):
-    return HttpResponse('About US')
+    data = {
+        'title': 'About Us'
+    }
+    return render(request, 'about.html', data)
 
-def course(request):
-    return HttpResponse('Course')
+def contactUs(request):
+    data = {
+        'title': 'Contact Us'
+    }
+    return render(request, 'contact.html')
 
 def courseDetail(request, courseId):
     return HttpResponse(f'course {courseId}')
