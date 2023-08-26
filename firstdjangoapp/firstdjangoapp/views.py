@@ -22,10 +22,16 @@ def aboutUs(request):
     return render(request, 'about.html', data)
 
 def contactUs(request):
-    data = {
-        'title': 'Contact Us'
-    }
-    return render(request, 'contact.html')
+    print(request)
+    try:
+        name = request.GET.get('name')
+        email = request.GET.get('email')
+        subject = request.GET.get('subject')
+        message = request.GET.get('message')
+    except:
+        pass
+
+    return render(request, 'contact.html', {'name': name, 'email': email, 'subject':subject, 'message': message})
 
 def courseDetail(request, courseId):
     return HttpResponse(f'course {courseId}')
