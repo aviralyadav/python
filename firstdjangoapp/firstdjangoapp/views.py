@@ -22,16 +22,19 @@ def aboutUs(request):
     return render(request, 'about.html', data)
 
 def contactUs(request):
-    print(request)
+    print('request', request)
+    data={}
     try:
-        name = request.GET.get('name')
-        email = request.GET.get('email')
-        subject = request.GET.get('subject')
-        message = request.GET.get('message')
+        if request.method=='POST':
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            subject = request.POST.get('subject')
+            message = request.POST.get('message')
+            data = {'name': name, 'email': email, 'subject':subject, 'message': message}
     except:
         pass
 
-    return render(request, 'contact.html', {'name': name, 'email': email, 'subject':subject, 'message': message})
+    return render(request, 'contact.html', data)
 
 def courseDetail(request, courseId):
     return HttpResponse(f'course {courseId}')
