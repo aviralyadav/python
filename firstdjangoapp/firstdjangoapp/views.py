@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.template import loader
 
 def homePage(request):
@@ -16,9 +16,12 @@ def homePage(request):
     return render(request, "index.html", data)
 
 def aboutUs(request):
-    data = {
-        'title': 'About Us'
-    }
+    if request.method == 'GET':
+        name = request.GET.get('output')
+        data = {
+            'title': 'About Us',
+            'name': name
+        }
     return render(request, 'about.html', data)
 
 def contactUs(request):
@@ -31,6 +34,8 @@ def contactUs(request):
             subject = request.POST.get('subject')
             message = request.POST.get('message')
             data = {'name': name, 'email': email, 'subject':subject, 'message': message}
+            url = '/about-us?output={}'.format(name)
+            return redirect(url)
     except:
         pass
 
