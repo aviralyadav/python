@@ -43,3 +43,9 @@ def contactUs(request):
 
 def courseDetail(request, courseId):
     return HttpResponse(f'course {courseId}')
+
+def submitForm(request):
+    name= ''
+    if request.method == 'POST':
+        name = request.POST.get('name')
+    return HttpResponse(name)
