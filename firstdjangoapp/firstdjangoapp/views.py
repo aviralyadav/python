@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
+from .forms import UsersForm
 
 def homePage(request):
     data = {
@@ -26,7 +27,9 @@ def aboutUs(request):
 
 def contactUs(request):
     print('request', request)
-    data={}
+    fn = UsersForm()
+    data={'form': fn}
+    
     try:
         if request.method=='POST':
             name = request.POST.get('name')
@@ -34,8 +37,8 @@ def contactUs(request):
             subject = request.POST.get('subject')
             message = request.POST.get('message')
             data = {'name': name, 'email': email, 'subject':subject, 'message': message}
-            url = '/about-us?output={}'.format(name)
-            return redirect(url)
+            # url = '/about-us?output={}'.format(name)
+            # return redirect(url)
     except:
         pass
 
