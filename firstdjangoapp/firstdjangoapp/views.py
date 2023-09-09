@@ -29,10 +29,13 @@ def calculator(request):
     c=''
     num1 = ''
     num2 = ''
+    if request.POST.get('num1') == '':
+                return render(request, 'calculator.html', {'error':True})
     try:
         if request.method == 'POST':
             num1 = eval(request.POST.get('num1'))
             num2 = eval(request.POST.get('num2'))
+            
             opr = request.POST.get('opr')
             if opr == '+':
                 c = num1+num2

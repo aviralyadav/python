@@ -19,6 +19,9 @@
                                             <input type="text" class="form-control" id="name" placeholder="Number" name="num1" value="{{num1}}">
                                             <label for="name">Number 1</label>
                                         </div>
+                                        {% if error %}
+                                        <div class="warning" style="color: red">Please enter the value</div>
+                                        {% endif %}
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-floating">
