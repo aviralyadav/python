@@ -25,6 +25,29 @@ def aboutUs(request):
         }
     return render(request, 'about.html', data)
 
+def calculator(request):
+    c=''
+    num1 = ''
+    num2 = ''
+    try:
+        if request.method == 'POST':
+            num1 = eval(request.POST.get('num1'))
+            num2 = eval(request.POST.get('num2'))
+            opr = request.POST.get('opr')
+            if opr == '+':
+                c = num1+num2
+            elif opr == '-':
+                c = num1-num2
+            elif opr == '*':
+                c = num1*num2
+            else:
+                c = num1/num2
+    except:
+        c = 'invalid opration'
+    print(c)
+
+    return render(request, 'calculator.html', {'num1':num1, 'num2': num2, 'output': c})
+
 def contactUs(request):
     print('request', request)
     fn = UsersForm()

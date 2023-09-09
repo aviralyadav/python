@@ -44,6 +44,8 @@ active {% endif %}">About</a>
             
             <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}
             active {% endif %}">Contact</a>
+            <a href="{% url 'calculator' %}" class="nav-item nav-link {% if request.path == '/calculator/' %}
+            active {% endif %}">Calculator</a>
         </div>
         <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
