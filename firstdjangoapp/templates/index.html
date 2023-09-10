@@ -79,23 +79,25 @@
         <!-- Category Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Services</h1>
                 <div class="row g-4">
+                    {% for service in servicesData %}
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <a class="cat-item rounded p-4" href="">
-                            <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
-                            <h6 class="mb-3">Marketing</h6>
-                            <p class="mb-0">123 Vacancy</p>
+                            <i class="fa fa-3x {{service.service_icon}} text-primary mb-4"></i>
+                            <h6 class="mb-3">{{service.service_title}}</h6>
+                            <p class="mb-0">{{service.service_desc}}</p>
                         </a>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    {% endfor %}
+                    {% comment %} <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-headset text-primary mb-4"></i>
                             <h6 class="mb-3">Customer Service</h6>
                             <p class="mb-0">123 Vacancy</p>
                         </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    </div> {% endcomment %}
+                    {% comment %} <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
                             <h6 class="mb-3">Human Resource</h6>
@@ -136,7 +138,7 @@
                             <h6 class="mb-3">Design & Creative</h6>
                             <p class="mb-0">123 Vacancy</p>
                         </a>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>

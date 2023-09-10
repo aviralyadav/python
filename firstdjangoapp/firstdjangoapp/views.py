@@ -2,8 +2,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 from .forms import UsersForm
+from services.models import Services
 
 def homePage(request):
+    servicesData=Services.objects.all()
     data = {
         'title': 'Home Page',
         'message': 'Welcome to Django',
@@ -12,7 +14,8 @@ def homePage(request):
         'userDetail': [
             {'name': 'Aviral', 'mobile': '8496079312'},
             {'name': 'Abhishek', 'mobile': '8496072123'}
-        ]
+        ],
+        'servicesData':servicesData
     }
     return render(request, "index.html", data)
 
