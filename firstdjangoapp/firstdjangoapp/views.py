@@ -5,7 +5,8 @@ from .forms import UsersForm
 from services.models import Services
 
 def homePage(request):
-    servicesData=Services.objects.all()
+    servicesData=Services.objects.all().order_by('-service_title') 
+    # use - dash for descending order, by default it will take ascending
     data = {
         'title': 'Home Page',
         'message': 'Welcome to Django',
