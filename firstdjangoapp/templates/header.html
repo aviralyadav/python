@@ -41,6 +41,8 @@
             <a href="{% url 'home' %}" class="nav-item nav-link {% if request.path == '/' %} active {% endif %}">Home</a>
             <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about-us/' %}
 active {% endif %}">About</a>
+            <a href="/services" class="nav-item nav-link {% if request.path == '/services/' %}
+active {% endif %}">Services</a>
             
             <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}
             active {% endif %}">Contact</a>
@@ -50,21 +52,4 @@ active {% endif %}">About</a>
         <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
 </nav>
-<!-- Navbar End -->
-{% comment %} <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                <div class="dropdown-menu rounded-0 m-0">
-                    <a href="job-list.html" class="dropdown-item">Job List</a>
-                    <a href="job-detail.html" class="dropdown-item">Job Detail</a>
-                </div>
-            </div> {% endcomment %}
-            {% comment %} <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                <div class="dropdown-menu rounded-0 m-0">
-                    <a href="category.html" class="dropdown-item">Job Category</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    <a href="404.html" class="dropdown-item">404</a>
-                </div>
-            </div> {% endcomment %}
-
 </div>

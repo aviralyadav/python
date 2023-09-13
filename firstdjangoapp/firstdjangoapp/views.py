@@ -23,6 +23,18 @@ def homePage(request):
     }
     return render(request, "index.html", data)
 
+def services(request):
+    # __icontains  for filtering with like %name%
+    servicesData=Services.objects.all()
+    if request.method == 'GET':
+        sn=request.GET.get('servicename')
+        if sn!= None:
+            servicesData=Services.objects.filter(service_title__icontains=sn)
+    data = {
+        'servicesData': servicesData
+    }
+    return render(request, 'services.html', data)
+
 def newsDetail(request, newsid):
     newsDetail = Neww.objects.get(id=newsid)
     return render(request, 'news-detail.html', {'newsDetail': newsDetail})

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Services Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Services</h1>
+                <form method="get">
+                    <input type="text" name="servicename" placeholder="Enter Service Title" >
+                    <button type="submit">Search</button>
+                </form>
+                <div class="row g-4">
+                    {% for service in servicesData %}
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="cat-item rounded p-4" href="">
+                            <i class="fa fa-3x {{service.service_icon}} text-primary mb-4"></i>
+                            <h6 class="mb-3">{{service.service_title}}</h6>
+                            <p class="mb-0">{{service.service_desc}}</p>
+                        </a>
+                    </div>
+                    {% empty %}
+                    <div class="row g-4">No Data Found!</div>
+                    {% endfor %}
+                  
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+       
+    </div>
+
+{% endblock  %}
