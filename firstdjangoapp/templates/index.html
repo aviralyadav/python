@@ -40,7 +40,7 @@
         <!-- Carousel End -->
 
 
-        <!-- Search Start -->
+        {% comment %} <!-- Search Start -->
         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
                 <div class="row g-2">
@@ -73,9 +73,13 @@
                 </div>
             </div>
         </div>
-        <!-- Search End -->
+        <!-- Search End --> {% endcomment %}
 
-
+        <marquee class="marquee-style" onmouseover="stop()" onmouseout="start()">
+            {% for news in newsData %}
+            <a href="/news-detail/{{news.id}}">{{news.title}}</a>
+            {% endfor %}
+        </marquee>
         <!-- Category Start -->
         <div class="container-xxl py-5">
             <div class="container">

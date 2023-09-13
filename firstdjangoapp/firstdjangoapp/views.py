@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from .forms import UsersForm
 from services.models import Services
+from neww.models import Neww
 
 def homePage(request):
-    servicesData=Services.objects.all().order_by('-service_title') 
+    newsData = Neww.objects.all()
+    servicesData=Services.objects.all().order_by('-service_title')
     # use - dash for descending order, by default it will take ascending
     data = {
         'title': 'Home Page',
@@ -16,9 +18,14 @@ def homePage(request):
             {'name': 'Aviral', 'mobile': '8496079312'},
             {'name': 'Abhishek', 'mobile': '8496072123'}
         ],
-        'servicesData':servicesData
+        'servicesData':servicesData,
+        'newsData': newsData
     }
     return render(request, "index.html", data)
+
+def newsDetail(request, newsid):
+    newsDetail = Neww.objects.get(id=newsid)
+    return render(request, 'news-detail.html', {'newsDetail': newsDetail})
 
 def aboutUs(request):
     if request.method == 'GET':

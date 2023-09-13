@@ -24,5 +24,6 @@ urlpatterns = [
     path('contact/', views.contactUs, name='contact'),
     path('calculator/', views.calculator, name='calculator'),
     path('submit/', views.submitForm, name='submit'),
-    path('course/<courseId>', views.courseDetail)
+    path('course/<courseId>', views.courseDetail),
+    path('news-detail/<newsid>', views.newsDetail)
 ]
