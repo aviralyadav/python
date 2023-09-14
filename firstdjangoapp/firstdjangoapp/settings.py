@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'services',
     'tinymce',
-    'neww'
+    'neww',
+    'contact_enquiry'
 ]
 
 MIDDLEWARE = [

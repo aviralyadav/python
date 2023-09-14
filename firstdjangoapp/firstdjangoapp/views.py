@@ -5,6 +5,7 @@ from .forms import UsersForm
 from services.models import Services
 from neww.models import Neww
 from django.core.paginator import Paginator
+from contact_enquiry.models import ContactEnquiry
 
 def homePage(request):
     newsData = Neww.objects.all()
@@ -80,6 +81,16 @@ def calculator(request):
     print(c)
 
     return render(request, 'calculator.html', {'num1':num1, 'num2': num2, 'output': c})
+
+def saveEnquiry(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        form = ContactEnquiry(name=name, email=email, subject=subject, message=message)
+        form.save()
+    return render(request, 'contact.html')
 
 def contactUs(request):
     print('request', request)
