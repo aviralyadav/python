@@ -4,6 +4,7 @@ from django.template import loader
 from .forms import UsersForm
 from services.models import Services
 from neww.models import Neww
+from django.core.paginator import Paginator
 
 def homePage(request):
     newsData = Neww.objects.all()
@@ -26,12 +27,18 @@ def homePage(request):
 def services(request):
     # __icontains  for filtering with like %name%
     servicesData=Services.objects.all()
-    if request.method == 'GET':
-        sn=request.GET.get('servicename')
-        if sn!= None:
-            servicesData=Services.objects.filter(service_title__icontains=sn)
+    paginator = Paginator(servicesData, 1)
+    page_number = request.GET.get('page')
+    servicesData_final = paginator.get_page(page_number)
+    total_page = servicesData_final.paginator.num_pages
+    # if request.method == 'GET':
+    #     sn=request.GET.get('servicename')
+    #     if sn!= None:
+    #         servicesData=Services.objects.filter(service_title__icontains=sn)
     data = {
-        'servicesData': servicesData
+        'servicesData': servicesData_final,
+        'total_page': total_page,
+        'pages_list': [n+1 for n in range(total_page)]
     }
     return render(request, 'services.html', data)
 

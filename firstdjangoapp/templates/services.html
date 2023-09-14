@@ -1,33 +1,61 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-    <div class="container-xxl bg-white p-0">
-        <!-- Services Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Services</h1>
-                <form method="get">
-                    <input type="text" name="servicename" placeholder="Enter Service Title" >
-                    <button type="submit">Search</button>
-                </form>
-                <div class="row g-4">
-                    {% for service in servicesData %}
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="cat-item rounded p-4" href="">
-                            <i class="fa fa-3x {{service.service_icon}} text-primary mb-4"></i>
-                            <h6 class="mb-3">{{service.service_title}}</h6>
-                            <p class="mb-0">{{service.service_desc}}</p>
-                        </a>
-                    </div>
-                    {% empty %}
-                    <div class="row g-4">No Data Found!</div>
-                    {% endfor %}
-                  
-                </div>
-            </div>
+<div class="container-xxl bg-white p-0">
+  <!-- Services Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        Services
+      </h1>
+      <form method="get">
+        <input
+          type="text"
+          name="servicename"
+          placeholder="Enter Service Title"
+        />
+        <button type="submit">Search</button>
+      </form>
+      <div class="row g-4">
+        {% for service in servicesData %}
+        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+          <a class="cat-item rounded p-4" href="">
+            <i class="fa fa-3x {{service.service_icon}} text-primary mb-4"></i>
+            <h6 class="mb-3">{{service.service_title}}</h6>
+            <p class="mb-0">{{service.service_desc}}</p>
+          </a>
         </div>
-        <!-- Services End -->
-       
+        {% empty %}
+        <div class="row g-4">No Data Found!</div>
+        {% endfor %}
+      </div>
     </div>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if servicesData.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{servicesData.previous_page_number}}"
+          >Previous</a
+        >
+      </li>
+      {% endif %} {% for n in pages_list %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{n}}">{{n}}</a>
+      </li>
+      {% endfor %} {% if servicesData.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{servicesData.next_page_number}}"
+          >Next</a
+        >
+      </li>
+      {% endif %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{total_page}}">Last</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Services End -->
+</div>
 
-{% endblock  %}
+{% endblock %}
