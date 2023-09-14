@@ -35,8 +35,8 @@ def services(request):
     }
     return render(request, 'services.html', data)
 
-def newsDetail(request, newsid):
-    newsDetail = Neww.objects.get(id=newsid)
+def newsDetail(request, newsslug):
+    newsDetail = Neww.objects.get(news_slug=newsslug)
     return render(request, 'news-detail.html', {'newsDetail': newsDetail})
 
 def aboutUs(request):

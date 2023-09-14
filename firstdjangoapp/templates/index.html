@@ -77,7 +77,7 @@
 
         <marquee class="marquee-style" onmouseover="stop()" onmouseout="start()">
             {% for news in newsData %}
-            <a href="/news-detail/{{news.id}}">{{news.title}}</a>
+            <a href="/news-detail/{{news.news_slug}}">{{news.title}}</a>
             {% endfor %}
         </marquee>
         <!-- Category Start -->
