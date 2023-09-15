@@ -8,7 +8,12 @@
                 <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">{{newsDetail.title}}</h1>
                 <div class="row g-4">
                     
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        {% if newsDetail.news_image != NULL %}
+                        <img src="/media/{{newsDetail.news_image}}" />
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.5s">
                             {{newsDetail.description | safe}}
                         </div>
